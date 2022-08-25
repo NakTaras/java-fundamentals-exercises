@@ -225,6 +225,9 @@ public class CrazyGenerics {
          * @return an entity from the given collection that has the max createdOn value
          */
         // todo: create a method according to JavaDoc and implement it using previous method
+        public static <T extends BaseEntity> T findMostRecentlyCreatedEntity(Collection<T> entities) {
+            return findMax(entities, CREATED_ON_COMPARATOR).orElseThrow();
+        }
 
         /**
          * An util method that allows to swap two elements of any list. It changes the list so the element with the index
@@ -238,7 +241,13 @@ public class CrazyGenerics {
         public static void swap(List<?> elements, int i, int j) {
             Objects.checkIndex(i, elements.size());
             Objects.checkIndex(j, elements.size());
-            throw new ExerciseNotCompletedException(); // todo: complete method implementation 
+            addMethod(elements, i, j);
+        }
+
+        public static <T> void addMethod(List<T> elements, int i, int j) {
+            T temp = elements.get(i);
+            elements.set(i, elements.get(j));
+            elements.set(j, temp);
         }
 
     }
