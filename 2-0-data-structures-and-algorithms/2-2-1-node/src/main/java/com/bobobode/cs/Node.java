@@ -9,5 +9,23 @@ package com.bobobode.cs;
  * @author Taras Boychuk
  */
 public class Node<T> {
-    // todo:
+    private T value;
+    private Node<T> nextNode;
+
+    public Node(T value) {
+        this.value = value;
+    }
+
+    public Node(T value, Node<T> nextNode) {
+        this.value = value;
+        this.nextNode = nextNode;
+    }
+
+    public void setNextNode(Node<T> nextNode) {
+        this.nextNode = nextNode;
+    }
+
+    public Node<T> getNextNode() {
+        return nextNode;
+    }
 }
